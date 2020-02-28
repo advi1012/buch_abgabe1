@@ -1,0 +1,106 @@
+###
+### N e t z w e r k   -  V e r b i n d u n g   n o t w e n d i g
+###
+
+@host = 127.0.0.1:8443
+
+### Login
+# @name login
+POST https://{{host}}/login
+Content-Type: application/x-www-form-urlencoded
+
+username=admin&password=p
+
+### Login mit falschem Passwort
+# @name login
+POST https://{{host}}/login
+Content-Type: application/x-www-form-urlencoded
+
+username=admin&password=FALSCH
+
+### Suche alle Buecher
+https://{{host}}/buecher
+
+### Suche mit vorhandener Buch-ID
+https://{{host}}/buecher/00000000-0000-0000-0000-000000000001
+
+### Suche mit vorhandener Buch-ID und Versionsnummer
+https://{{host}}/buecher/00000000-0000-0000-0000-000000000001
+If-None-Match: 0
+
+### Optionen zu Buch-ID
+OPTIONS https://{{host}}/buecher/00000000-0000-0000-0000-000000000001
+
+### Suche mit ungueltiger Buch-ID
+https://{{host}}/buecher/YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY
+
+### Suche mit nicht-vorhandener Buch-ID
+https://{{host}}/buecher/99999999-9999-9999-9999-999999999999
+
+### Suche mit vorhandenem Titel
+https://{{host}}/buecher?titel=a
+
+### Suche mit vorhandener ISBN
+https://{{host}}/buecher?isbn=000-0-00000-000-1
+
+### Suche mit vorhandenen Schlagwoertern
+https://{{host}}/buecher?javascript=true&typescript=true
+
+### Suche mit vorhandenem Schlagwort "JAVASCRIPT"
+https://{{host}}/buecher?javascript=true
+
+### Suche mit vorhandenem Schlagwort "TYPESCRIPT"
+https://{{host}}/buecher?&typescript=true
+
+### Suche mit gueltiger Buchart
+https://{{host}}/buecher?art=KINDLE
+
+### Suche mit gueltigem Rating
+https://{{host}}/buecher?rating=1
+
+### Suche lieferbare Buecher
+https://{{host}}/buecher?lieferbar=true
+
+### Neues Buch anlegen
+POST https://{{host}}/buecher
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.$.token}}
+
+< .\buch-neu.json
+
+### Neues Buch mit ungueltigen Daten anlegen
+POST https://{{host}}/buecher
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.$.token}}
+
+< .\buch-neu-invalid.json
+
+### Vorhandenes Buch aktualisieren
+PUT https://{{host}}/buecher/00000000-0000-0000-0000-000000000003
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.$.token}}
+If-Match: 0
+
+< .\buch-3-put.json
+
+### Vorhandenes Buch *OHNE* Versionsnummer aktualisieren
+PUT https://{{host}}/buecher/00000000-0000-0000-0000-000000000003
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.$.token}}
+
+< .\buch-3-put.json
+
+### Vorhandenes Buch mit ungueltigen Daten aktualisieren
+PUT https://{{host}}/buecher/00000000-0000-0000-0000-000000000003
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.$.token}}
+If-Match: 0
+
+< .\buch-3-put-invalid.json
+
+### Loeschen eines vorhandenen Buches
+DELETE https://{{host}}/buecher/00000000-0000-0000-0000-000000000005
+Authorization: Bearer {{login.response.body.$.token}}
+
+### Suche alle Verlage
+https://{{host}}/verlage

@@ -1,0 +1,177 @@
+# Copyright (C) 2018 - present Juergen Zimmermann, Florian Rusch
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+---
+parser: '@typescript-eslint/parser'
+parserOptions:
+    project: './tsconfig.json'
+    ecmaVersion: 2018
+    sourceType: module
+    ecmaFeatures:
+        impliedStrict: true
+plugins:
+    - '@typescript-eslint'
+extends:
+    - eslint:recommended
+    - plugin:@typescript-eslint/recommended
+    - prettier
+    - prettier/@typescript-eslint
+env:
+    # browser: true
+    node: true
+    es6: true
+rules:
+    # https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin#supported-rules
+    '@typescript-eslint/array-type':
+        - error
+        - generic
+    '@typescript-eslint/explicit-function-return-type': off
+    '@typescript-eslint/explicit-member-accessibility': off
+    '@typescript-eslint/member-naming': error
+    '@typescript-eslint/member-ordering': error
+    '@typescript-eslint/no-explicit-any': off
+    '@typescript-eslint/no-extraneous-class': off
+    '@typescript-eslint/no-parameter-properties': off
+    '@typescript-eslint/no-this-alias': error
+    '@typescript-eslint/no-type-alias': error
+    '@typescript-eslint/no-unnecessary-qualifier': error
+    '@typescript-eslint/no-unnecessary-type-assertion': error
+    '@typescript-eslint/no-use-before-define': off
+    '@typescript-eslint/no-useless-constructor': error
+    '@typescript-eslint/restrict-plus-operands': error
+    array-bracket-spacing: error
+    array-bracket-newline:
+        - error
+        - multiline: true
+    arrow-body-style:
+        - error
+        - as-needed
+    arrow-parens:
+        - error
+        - as-needed
+    block-scoped-var: error
+    block-spacing: error
+    camelcase: error
+    comma-spacing: error
+    comma-style: error
+    consistent-this: error
+    curly: error
+    comma-dangle:
+        - error
+        - always-multiline
+    default-case: error
+    dot-notation: error
+    eqeqeq: error
+    eol-last: error
+    for-direction: error
+    func-call-spacing: error
+    func-name-matching: error
+    func-names:
+        - error
+        - never
+    func-style: error
+    getter-return: error
+    indent: off
+    init-declarations: error
+    key-spacing: error
+    keyword-spacing: error
+    line-comment-position: error
+    linebreak-style:
+        - error
+        - windows
+    max-len:
+        - error
+        - ignoreComments: true
+          ignoreTrailingComments: true
+          ignoreStrings: true
+          ignoreTemplateLiterals: true
+    no-buffer-constructor: error
+    no-console: off
+    no-duplicate-imports: error
+    no-else-return: error
+    no-empty-function: error
+    no-extra-parens: error
+    no-implicit-globals: error
+    no-magic-numbers:
+        - error
+        - ignoreArrayIndexes: true
+          enforceConst: true
+          ignore:
+              - 0
+              - 1
+              - -1
+    no-multi-spaces: error
+    no-multiple-empty-lines: error
+    no-negated-condition: error
+    no-param-reassign: error
+    no-shadow: error
+    no-tabs: error
+    no-template-curly-in-string: error
+    no-trailing-spaces: error
+    no-use-before-define:
+        - error
+        - functions: false
+          classes: false
+    no-useless-return: error
+    no-var: error
+    no-whitespace-before-property: error
+    nonblock-statement-body-position: error
+    object-curly-newline:
+        - error
+        - multiline: true
+    object-property-newline:
+        - error
+        - allowAllPropertiesOnSameLine: true
+    object-shorthand:
+        - error
+        - always
+    one-var-declaration-per-line: error
+    operator-assignment: error
+    operator-linebreak: error
+    padded-blocks:
+        - error
+        - never
+    prefer-arrow-callback: error
+    prefer-const: error
+    prefer-destructuring: error
+    prefer-numeric-literals: error
+    prefer-promise-reject-errors: error
+    prefer-rest-params: error
+    prefer-spread: error
+    prefer-template: error
+    quote-props:
+        - error
+        - as-needed
+    quotes:
+        - error
+        - single
+    require-await: error
+    rest-spread-spacing: error
+    semi:
+        - error
+        - never
+    semi-spacing: error
+    sort-imports: error
+    space-before-blocks: error
+    space-before-function-paren:
+        - error
+        - asyncArrow: always
+          named: never
+    space-in-parens: error
+    space-infix-ops: error
+    space-unary-ops: error
+    spaced-comment: error
+    strict: error
+    template-curly-spacing: error
